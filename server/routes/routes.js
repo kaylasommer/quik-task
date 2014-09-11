@@ -20,7 +20,7 @@ module.exports = function(app, express){
   app.use(debug.info);
 
   app.get('/home', home.index);
-  app.post('/priorities', priorities.add);
+  app.post('/priorities', priorities.create);
 
   console.log('Express: Routes Loaded');
 };
