@@ -1,0 +1,33 @@
+.row
+  .col-xs-6
+    h2.text-center Tasks
+  .col.xs-6
+
+.row
+  .col-xs-2
+  .col-xs-4
+    form.form(name='tasksForm', role='form', novalidate)
+      .form-group
+        label(for='name') Name
+        input.form-control(type='text', name='name', ng-model='task.name', required, autofocus, ng-minlength='3')
+      .form-group
+        label(for='due') Due
+        input.form-control(type='date', name='due', ng-model='task.color', required)
+      .form-group
+        label(for='priority') Priority
+        select.form-control(ng-model='task.priority', required)
+          option(ng-repeat='p in priorities', value='{{p._id}}') {{p.name}}
+      button.btn.btn-primary.pull-right(ng-show='tasksForm.$valid', ng-click='add()') Add Task
+  //.col-xs-4
+    table.table.tasks
+      thead
+        th Name
+        th Due
+        th Priority
+      tbody
+        tr(ng-repeat='t in tasks', style='background-color:{{t.priority.color}};')
+          td {{t.name}}
+          td {{t.due}}
+          td {{t.priority.name}}
+  .col-xs-2
+

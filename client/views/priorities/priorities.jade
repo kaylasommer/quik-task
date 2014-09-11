@@ -1,9 +1,10 @@
 .row
   .col-xs-6
-    h2 Priorities
+    h2.text-center Priorities
   .col.xs-6
-    h3 Priority Name
+
 .row
+  .col-xs-2
   .col-xs-4
     form.form(name='prioritiesForm', role='form', novalidate)
       .form-group
@@ -13,5 +14,20 @@
         label(for='color') Color
         input.form-control(type='color', name='color', ng-model='priority.color', required, value='red')
       button.btn.btn-primary.pull-right(ng-show='prioritiesForm.$valid', ng-click='add()') Set Priority
+  .col-xs-4
+    .radio.inline
+      label
+        input(name='sort', type='radio', ng-model='sort', value='name')
+        span Ascending &nbsp
+      label
+        input(name='sort', type='radio', ng-model='sort', value='-name')
+        span Descending &nbsp
+    table.table.priority
+      thead
+        th Name
+        th Color
+      tbody
+        tr(ng-repeat='p in priorities | orderBy: sort', style='background-color:{{p.color}};')
+          td {{p.name}}
+          td {{p.color}}
   .col-xs-2
-  .col-xs-6

@@ -6,7 +6,10 @@
     function create(priority){
       return $http.post('/priorities', priority);
     }
-    return {create:create};
+    function all(){
+      return $http.get('/priorities');
+    }
+    return {create:create, all:all};
   }]);
 })();
 

@@ -14,4 +14,8 @@ Priority.create = function(o, cb){
   Priority.collection.save(priority, cb);
 };
 
+Priority.all = function(cb){
+  Priority.collection.find().toArray(cb);
+};
+
 module.exports = Priority;

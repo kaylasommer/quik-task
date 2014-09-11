@@ -1,9 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 body{
-  background-color: #7FA58D;
-  color: white;
+  font-family: 'Lato', sans-serif;
+  background-color: darken(white, 2%);
+  color: dimgrey;
 
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
+    font-weight: 200;
   }
 
   .navbar {
@@ -11,15 +14,33 @@ body{
     border-bottom: 1px solid grey;
   }
   .form {
-    background-color: rgba(238, 238, 238, 0.27);
+    background-color: rgb(231, 231, 231);
     border-radius: 10px;
     padding: 20px;
-    color: white;
+    color: dimgrey;
     letter-spacing: 1px;
     padding-bottom: 50px;
   }
   input.ng-invalid {
     border: 2px solid lighten(red, 20%);
+  }
+  .priority {
+    color: white;
+
+    th {
+      font-size: 20px;
+      padding: 5px;
+      color: dimgrey;
+      font-weight: 100;
+      background-color: rgb(231, 231, 231);
+    }
+    td {
+      padding: 5px;
+    }
+  }
+
+  .radio.inline {
+    margin-top: -30px !important;
   }
 }
 
