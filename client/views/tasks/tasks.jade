@@ -4,30 +4,32 @@
   .col.xs-6
 
 .row
-  .col-xs-2
   .col-xs-4
     form.form(name='tasksForm', role='form', novalidate)
       .form-group
         label(for='name') Name
-        input.form-control(type='text', name='name', ng-model='task.name', required, autofocus, ng-minlength='3')
+        input.form-control#name(type='text', name='name', ng-model='task.name', required, autofocus, ng-minlength='3')
       .form-group
         label(for='due') Due
-        input.form-control(type='date', name='due', ng-model='task.color', required)
+        input.form-control#due(type='date', name='due', ng-model='task.due', required)
       .form-group
-        label(for='priority') Priority
-        select.form-control(ng-model='task.priority', required)
-          option(ng-repeat='p in priorities', value='{{p._id}}') {{p.name}}
+        label(for='priorityId') Priority
+        select.form-control(name='priorityId', ng-model='task.priorityId', ng-options='p._id as p.name for p in priorities', required)
+          option(value='') Select Priority
       button.btn.btn-primary.pull-right(ng-show='tasksForm.$valid', ng-click='add()') Add Task
-  //.col-xs-4
+  .col-xs-8
     table.table.tasks
       thead
+        th Complete
         th Name
         th Due
         th Priority
       tbody
         tr(ng-repeat='t in tasks', style='background-color:{{t.priority.color}};')
+          td
+            .checkbox-inline
+              input(type='checkbox' id='' value='')
           td {{t.name}}
           td {{t.due}}
-          td {{t.priority.name}}
-  .col-xs-2
+          td {{t.priority}}
 

@@ -4,24 +4,24 @@
   angular.module('task')
   .controller('TasksCtrl', ['$scope', 'Task', 'Priority', function($scope, Task, Priority){
     $scope.task = {};
-    $scope.tasks = [];
     $scope.priorities = [];
+    $scope.tasks = [];
 
-    Priority.all().then(function(response){
+    Task.all().then(function(response){
       $scope.tasks = response.data.tasks;
     });
+
+    $scope.add = function(){
+      Task.create($scope.task).then(function(response){
+        console.log(response);
+        $scope.tasks.push(response.data.task);
+        $scope.task = {};
+      });
+    };
 
     Priority.all().then(function(response){
       $scope.priorities = response.data.priorities;
     });
 
-    $scope.add = function(){
-      Task.create($scope.tasks).then(function(response){
-        console.log(response);
-
-        $scope.tasks.push(response.data.task);
-        $scope.task = {};
-      });
-    };
   }]);
 })();

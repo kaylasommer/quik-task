@@ -4,8 +4,9 @@ var Mongo = require('mongodb');
 
 function Task(o){
   this.name  = o.name;
-  this.due = Date(o.due);
+  this.due =  new Date(o.due);
   this.priority = Mongo.ObjectID(o.priority);
+  this.isComplete = false;
 }
 
 Object.defineProperty(Task, 'collection', {

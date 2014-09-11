@@ -1,8 +1,6 @@
 'use strict';
 
-function Priority(o){
-  this.name  = o.name;
-  this.color = o.color;
+function Priority(){
 }
 
 Object.defineProperty(Priority, 'collection', {
@@ -10,8 +8,7 @@ Object.defineProperty(Priority, 'collection', {
 });
 
 Priority.create = function(o, cb){
-  var priority = new Priority(o);
-  Priority.collection.save(priority, cb);
+  Priority.collection.save(o, cb);
 };
 
 Priority.all = function(cb){
