@@ -18,17 +18,28 @@
           option(value='') Select Priority
       button.btn.btn-primary.pull-right(ng-show='tasksForm.$valid', ng-click='add()') Add Task
   .col-xs-8
+   .panel.panel-default
+      .panel-body
+        .form-group
+          label(for='sort') Sort
+          select.form-control(name='sort', ng-model='sort')
+            option(value='name') Name Ascending
+            option(value='-name') Name Descending
+            option(value='due') Due Ascending
+            option(value='-due') Due Descending
+            option(value='priority.name') Priority Ascending
+            option(value='-priority.name') Priority Descending
     table.table.tasks
       thead
-        th Complete
+        th Complete?
         th Name
         th Due
         th Priority
       tbody
-        tr(ng-repeat='t in tasks', style='background-color:{{t.priority.color}};')
+        tr(ng-repeat='t in tasks | orderBy:sort', ng-class='{complete:t.isComplete}' style='background-color:{{t.priority.color}};')
           td
             .checkbox-inline
-              input(type='checkbox' id='' value='')
+              input(type='checkbox', ng-model='t.isComplete')
           td {{t.name}}
           td {{t.due}}
           td {{t.priority}}
