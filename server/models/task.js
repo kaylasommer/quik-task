@@ -5,7 +5,7 @@ var Mongo = require('mongodb');
 function Task(o){
   this.name  = o.name;
   this.due =  new Date(o.due);
-  this.priority = Mongo.ObjectID(o.priority);
+  this.priorityId = Mongo.ObjectID(o.priorityId);
   this.isComplete = false;
 }
 

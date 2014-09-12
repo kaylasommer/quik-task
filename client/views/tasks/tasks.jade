@@ -36,11 +36,11 @@
         th Due
         th Priority
       tbody
-        tr(ng-repeat='t in tasks | orderBy:sort', ng-class='{complete:t.isComplete}' style='background-color:{{t.priority.color}};')
+        tr(ng-repeat='t in tasks | orderBy:sort', ng-class='{complete:t.isComplete}')
           td
             .checkbox-inline
-              input(type='checkbox', ng-model='t.isComplete')
+              input(type='checkbox', ng-model='t.isComplete', ng-click='toggle(t)')
           td {{t.name}}
           td {{t.due}}
-          td {{t.priority}}
+          td(style='background-color:{{t.priority.color}};') {{t.priority.name}}
 

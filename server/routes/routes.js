@@ -25,6 +25,7 @@ module.exports = function(app, express){
   app.get('/priorities', priorities.index);
   app.post('/tasks', tasks.create);
   app.get('/tasks', tasks.index);
+  app.post('/tasks/toggle', tasks.toggle);
 
   console.log('Express: Routes Loaded');
 };
